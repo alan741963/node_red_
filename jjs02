@@ -1,0 +1,83 @@
+[
+    {
+        "id": "e2449e.39b07b6",
+        "type": "tab",
+        "label": "Flow 2"
+    },
+    {
+        "id": "d2552e35.5445d",
+        "type": "inject",
+        "z": "e2449e.39b07b6",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "b32c5844.eaa868"
+            ]
+        ]
+    },
+    {
+        "id": "b32c5844.eaa868",
+        "type": "function",
+        "z": "e2449e.39b07b6",
+        "name": "Payload",
+        "func": "msg.headers={\n    deviceKey:\"yJlmMniROctf85XA\"\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 293,
+        "y": 161,
+        "wires": [
+            [
+                "e476cbfc.2bc088"
+            ]
+        ]
+    },
+    {
+        "id": "e476cbfc.2bc088",
+        "type": "http request",
+        "z": "e2449e.39b07b6",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/D3p0LvTJ/datachannels/LEDControl/datapoints.csv",
+        "tls": "",
+        "x": 455,
+        "y": 176,
+        "wires": [
+            [
+                "d6b59028.7c768",
+                "12e17342.e0fdcd"
+            ]
+        ]
+    },
+    {
+        "id": "d6b59028.7c768",
+        "type": "http response",
+        "z": "e2449e.39b07b6",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 644,
+        "y": 187,
+        "wires": []
+    },
+    {
+        "id": "12e17342.e0fdcd",
+        "type": "debug",
+        "z": "e2449e.39b07b6",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 733,
+        "y": 289,
+        "wires": []
+    }
+]
